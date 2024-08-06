@@ -4,7 +4,24 @@ Knowledge Base for Milvus
 
 #### Features
 
+***Backup***
+
+The official backup tool is milvus-backup: 
+
+* https://milvus.io/docs/milvus_backup_overview.md
+* https://github.com/zilliztech/milvus-backup/tree/main
+
+The import interface is:
+https://milvus.io/api-reference/pymilvus/v2.4.x/ORM/utility/do_bulk_insert.md
+
+* It  supports JSON/Numpy/Parquet files with specified format.
+
+Bulk Writer is a tool for generating Parquet files with correct format for milvus bulk insert interface.
+https://milvus.io/api-reference/pymilvus/v2.4.x/DataImport/LocalBulkWriter/LocalBulkWriter.md
+
+
 ***Multi Vector Fields***
+
 v2.4.x supports multi vector fields.
 https://milvus.io/docs/glossary.md#Multi-Vector
 

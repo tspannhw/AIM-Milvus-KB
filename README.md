@@ -106,6 +106,9 @@ https://milvus.io/docs/multi-vector-search.md
 * How to connect LangChain to Milvus
   https://github.com/milvus-io/milvus/discussions/35249
 
+* Benchmark
+  https://github.com/zilliztech/VectorDBBench
+  
 * Can milvus Standalone 2.3.0 be directly upgraded to 2.4.4 using docker? Whether to use migration data
 
 If you are using docker-compose, 3 steps to upgrade:

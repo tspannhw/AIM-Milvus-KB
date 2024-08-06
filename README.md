@@ -4,7 +4,7 @@ Knowledge Base for Milvus
 
 #### Features
 
-*** Multi Vector Fields
+*** Multi Vector Fields ***
 v2.4.x supports multi vector fields.
 https://milvus.io/docs/glossary.md#Multi-Vector
 

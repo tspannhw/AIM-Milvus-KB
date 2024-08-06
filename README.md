@@ -151,6 +151,10 @@ The Helm chart does not currently support specifying a secret to provide accessK
 
 #### Tips
 
+***How to Count Rows***
+
+https://milvus.io/docs/get-and-scalar-query.md#Count-entities
+
 ***Processing Large Datasets***
 
 If you are not concerned about search latency, you can employ the Iterator feature ( https://milvus.io/docs/with-iterators.md ) to process large datasets. For instance, to handle a dataset of 1 million records, you can set up an iterator that iterate for 1000 times with batch size of 1000 and limit of 1000,000.

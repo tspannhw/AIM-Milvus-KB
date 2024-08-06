@@ -147,9 +147,44 @@ The Helm chart does not currently support specifying a secret to provide accessK
 
  It's a reasonable feature to return the scores (it preferable to use term 'score' instead of 'distance' in this case) for original sub search result. We filed a feature request here: https://github.com/milvus-io/milvus/issues/35062
 
- 
+
+In PyMilus for search, To support asyncIO, PyMilvus need to replace the underlying grpc channel to aio_channel, so currently there's no work around for pymilvus to fit in python asyncIO problem.
+
 
 #### Tips
+
+
+***Multi-Vector Search with Ten Fields***
+
+MaxVectorFieldNum probably 10.
+
+https://github.com/milvus-io/milvus/blob/5037497929168510fc2c505a3678d361d4343fa3/pkg/util/paramtable/component_param.go#L1116
+
+https://milvus.io/docs/multi-vector-search.md
+
+Frank | Zilliz — 05/08/2024 2:58 PM
+
+You can theoretically go above 10, but I guess you might run into performance issues. There is an upper limit to the number of fields in a collection schema as well via proxy.maxFieldNum. What are you looking to build? We might be able to find a workaround.
+
+
+***Use the Latest Version***
+
+Older version allowing query on deleted data.   Fixed.
+
+https://github.com/milvus-io/milvus/issues/33247
+
+***Import JSON***
+
+https://milvus.io/docs/import-data.md#Import-data
+
+You can also use  bulkinsert API, which can consume s3 json files directly
+
+***Add your own extra fields with JSON, no schema***
+
+milvus support dynamic field, so you can skip pre-define schema for scalar fields. but you need to define at lease two fields, one for primary key, another for embeddings. and you can reference the dynamic field usage
+
+https://milvus.io/docs/enable-dynamic-field.md#Enable-Dynamic-Field
+
 
 ***How to Count Rows***
 
@@ -174,4 +209,13 @@ Should you encounter a bandwidth-related issue, the logs may indicate a prolonge
 https://github.com/milvus-io/pymilvus/issues/2044
 
 
+***File Lock Issue for some in Milvus Lite***
 
+https://github.com/milvus-io/milvus-lite/issues/195
+
+
+#### Resources
+
+* https://python.langchain.com/v0.2/docs/integrations/vectorstores/milvus/#per-user-retrieval
+
+* 

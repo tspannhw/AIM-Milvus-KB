@@ -4,6 +4,15 @@ Knowledge Base for Milvus
 
 #### Features
 
+***Docker Compose Requirements***
+
+https://milvus.io/docs/prerequisite-docker.md
+
+Make sure you have enough and fast enough RAM and disk.
+
+In our document, the pre-requirement mentioned etcd ought to be deployed on NVMe SSD:
+
+
 ***Fast Insert***  by yhmo | Zilliz
 
 There are two major interfaces that milvus ingests data:
@@ -96,10 +105,42 @@ https://milvus.io/docs/multi-vector-search.md
 * How to connect LangChain to Milvus
   https://github.com/milvus-io/milvus/discussions/35249
 
+#### Settings
+
+***Milvus Proxy Node***
+
+* the maximum connections per a Milvus Proxy Node is configured by proxy.maxConnectionNum, default is 10000. 
+
+* The connection TTL for the server is configured by proxy.connectionCheckIntervalSeconds, default is 120 seconds, but the client SDK will try reconnect transparently.
+
+
+#### Tutorials
+
+https://github.com/milvus-io/bootcamp/tree/master/bootcamp/tutorials/quickstart/apps/multimodal_rag_with_milvus
+
+https://milvus.io/docs/integrate_with_memgpt.md
+
+
 
 #### Milvus Under Construction
 
 The Helm chart does not currently support specifying a secret to provide accessKey and secretKey. 
+
+
+#### Tips
+
+***Processing Large Datasets***
+
+If you are not concerned about search latency, you can employ the Iterator feature ( https://milvus.io/docs/with-iterators.md ) to process large datasets. For instance, to handle a dataset of 1 million records, you can set up an iterator that iterate for 1000 times with batch size of 1000 and limit of 1000,000.
+
+****Obtain Recent Logs***
+
+In the majority of instances, the script deployments/export-log/export-milvus-log.sh can be employed to obtain the most recent logs. The log entries associated with segment_loader provide insights into the segment loading process within the QueryNode. 
+
+
+***Bandwidth Issues***
+
+Should you encounter a bandwidth-related issue, the logs may indicate a prolonged download duration. To address this, it is recommended to consult with your storage service provider, such as Amazon S3, for tailored support and solutions.
 
 
 

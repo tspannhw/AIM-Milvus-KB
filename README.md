@@ -4,6 +4,18 @@ Knowledge Base for Milvus
 
 #### Features
 
+
+***Milvus Lite Note***
+
+Indexes are not yet implemented.
+
+***Milvus CLI***
+
+milvus-cli doesn't support connecting milvus with TLS / SSL.
+
+https://milvus.io/docs/install_cli.md
+
+
 ***Backup***
 
 The official backup tool is milvus-backup: 
@@ -41,6 +53,10 @@ https://milvus.io/docs/multi-vector-search.md
 * How to connect LangChain to Milvus
   https://github.com/milvus-io/milvus/discussions/35249
 
-  
-  
+
+#### Milvus Under Construction
+
+The Helm chart does not currently support specifying a secret to provide accessKey and secretKey. 
+
+
 

@@ -4,6 +4,16 @@ Knowledge Base for Milvus
 
 #### Features
 
+
+***Rerankers***
+
+https://milvus.io/docs/rerankers-overview.md
+
+Example:    https://github.com/run-llama/llama_index/blob/main/llama-index-integrations/vector_stores/llama-index-vector-stores-milvus/llama_index/vector_stores/milvus/base.py
+
+https://docs.llamaindex.ai/en/stable/examples/vector_stores/MilvusHybridIndexDemo/
+
+
 ***Milvus Cloud Storage***
 
 Azure:   Azure Blob Storage only.  ADLS1/2 not supported yet.

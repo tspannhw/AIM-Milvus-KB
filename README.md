@@ -13,6 +13,13 @@ Example:    https://github.com/run-llama/llama_index/blob/main/llama-index-integ
 
 https://docs.llamaindex.ai/en/stable/examples/vector_stores/MilvusHybridIndexDemo/
 
+Cross Encoder
+
+CrossEncoderRerankFunction` class. This functionality allows you to score the relevance of query-document pairs effectively.
+
+https://milvus.io/docs/rerankers-cross-encoder.md
+
+
 
 ***Milvus Cloud Storage***
 

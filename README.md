@@ -145,6 +145,10 @@ https://milvus.io/docs/integrate_with_memgpt.md
 The Helm chart does not currently support specifying a secret to provide accessKey and secretKey. 
 
 
+ It's a reasonable feature to return the scores (it preferable to use term 'score' instead of 'distance' in this case) for original sub search result. We filed a feature request here: https://github.com/milvus-io/milvus/issues/35062
+
+ 
+
 #### Tips
 
 ***Processing Large Datasets***

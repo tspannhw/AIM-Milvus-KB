@@ -150,8 +150,17 @@ The Helm chart does not currently support specifying a secret to provide accessK
 
 In PyMilus for search, To support asyncIO, PyMilvus need to replace the underlying grpc channel to aio_channel, so currently there's no work around for pymilvus to fit in python asyncIO problem.
 
+https://github.com/milvus-io/milvus/issues/34150
+
+
 
 #### Tips
+
+
+***Dynamic Fields***
+
+https://milvus.io/docs/enable-dynamic-field.md
+
 
 
 ***Multi-Vector Search with Ten Fields***
@@ -213,9 +222,40 @@ https://github.com/milvus-io/pymilvus/issues/2044
 
 https://github.com/milvus-io/milvus-lite/issues/195
 
+***Milvus Architecture***
+
+Yes. Minio will be used. Minio acts as a mediator in between Milvus and S3. Minio keeps track of all the data in S3, across all its servers(if in case there are multiple miniò pods). So miniò is required for Milvus to store object data into S3
+
+***Milvus Delete Note***
+
+**delete()** is an async operation.
+
+When you call **delete()**, a delete request is received by proxy node of milvus. The proxy node sends the request to Pulsar/Kafka. Then the data node and query node consume the request from Pulsar/Kafka asynchronously. The delete operation is complete only after the delete request is applied to the correct segment.
+
+In **pymilvus**, there are two methods to get the row number of a collection.
+
+**collection.num_entities**, this method gets the row number of each segment from Etcd. But this num_enties doesn't count deleted items. So, the num_entities doesn't change even you delete some items.
+
+collection.query(expr=", output_fields=["count(*)"], this is a pure query action. It counts the deleted items. So, after a delete operation is completed, this method will return correct row number.
+
+No need to call create_index again.
+
+Once you have called create_index(), the index type is already specified. Milvus will build new index for new data. In fact, each segment has an independent index. Once a new segment is generated, milvus will automatically build index for the new segment.
+
+If you want to change index type or index parameter, you need to release the collection and call drop_index() to drop the old index. Then call create_index() to create the new index.
+
+No need to manually call compaction. Milvus will automatically compact the data by itself.
+
+
+***Commit/Rollback***
+
+As of Milvus 2.4.4:  No, milvus doesn't have commit/rollback operations.
+
 
 #### Resources
 
 * https://python.langchain.com/v0.2/docs/integrations/vectorstores/milvus/#per-user-retrieval
-
-* 
+* https://milvus.io/docs/performance_faq.md#How-to-set-nlist-and-nprobe-for-IVF-indexes
+* https://milvus.io/api-reference/pymilvus/v2.4.x/ORM/utility/get_server_version.md
+* https://github.com/milvus-io/bootcamp/blob/master/bootcamp/RAG/readthedocs_zilliz_langchain.ipynb
+* https://milvus.io/docs/insert-update-delete.md#Upsert-entities

@@ -4,6 +4,12 @@ Knowledge Base for Milvus
 
 #### Features
 
+***Milvus Cloud Storage***
+
+Azure:   Azure Blob Storage only.  ADLS1/2 not supported yet.
+
+https://milvus.io/docs/abs.md
+
 
 ***Milvus Lite Note***
 
@@ -57,6 +63,7 @@ https://milvus.io/docs/multi-vector-search.md
 #### Milvus Under Construction
 
 The Helm chart does not currently support specifying a secret to provide accessKey and secretKey. 
+
 
 
 

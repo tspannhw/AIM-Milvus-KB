@@ -158,5 +158,9 @@ In the majority of instances, the script deployments/export-log/export-milvus-lo
 Should you encounter a bandwidth-related issue, the logs may indicate a prolonged download duration. To address this, it is recommended to consult with your storage service provider, such as Amazon S3, for tailored support and solutions.
 
 
+***Add Client Connection to a Collection*** 
+
+https://github.com/milvus-io/pymilvus/issues/2044
+
 
 

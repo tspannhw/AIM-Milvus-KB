@@ -4,7 +4,7 @@ Knowledge Base for Milvus
 
 #### Features
 
-***Fast Insert***
+***Fast Insert***  by yhmo | Zilliz
 
 There are two major interfaces that milvus ingests data:
 insert()

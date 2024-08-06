@@ -4,6 +4,26 @@ Knowledge Base for Milvus
 
 #### Features
 
+***Fast Insert***
+
+There are two major interfaces that milvus ingests data:
+insert()
+This method accepts column-based or row-based data, and the data is passed through RPC channel from SDK client to Milvus server. Proxy node of the Milvus server receives the data, and passes the data into Pulsar/Kafka, then data nodes and query nodes consume the data from Pulsar/Kafka, and eventually persist the data into segments stored in S3.
+The size of each insert request is limited to 64MB by default.
+
+bulkinsert()
+This method only accepts some relative paths of S3. Users provide the files with a certain format and upload the files to S3. Then call bulkinsert interface to pass the S3 paths to Milvus server. Milvus server tells data nodes to read the files from S3. (Note: the files must be uploaded into the bucket which the Milvus server can access)
+The bulkinsert tasks in data nodes are asynchronously. Data node reads a file from S3, constructs segments from the data, and calls index node to build index for the new segments.
+
+File format can be JSON, Numpy or Parquet. Parquet is recommended.
+In python SDK, the method is utility.do_bulk_insert(). 
+In Java SDK, the method is MilvusClient.bulkInsert().
+The size of each data file is limited to 16GB. 
+
+![image](https://github.com/user-attachments/assets/1c58efe5-9280-4703-b59a-f8876b909826)
+
+https://milvus.io/docs/prepare-source-data.md
+
 
 ***Rerankers***
 

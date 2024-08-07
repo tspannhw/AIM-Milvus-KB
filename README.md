@@ -156,6 +156,32 @@ https://github.com/milvus-io/milvus/issues/34150
 
 #### Tips
 
+***Multitenancy with Partition Keys***
+
+````
+# 2. Create a collection
+schema = MilvusClient.create_schema(
+    auto_id=False,
+    enable_dynamic_field=True,
+    partition_key_field="color",
+    num_partitions=16 # Number of partitions. Defaults to 16.
+)
+````
+
+You need to define a **partition_key_field** with the **num_partitions** being optional as it has a good default.
+
+
+* https://milvus.io/docs/multi_tenancy.md
+
+* https://milvus.io/docs/use-partition-key.md
+
+* https://github.com/milvus-io/milvus/discussions/26320
+
+* https://zilliz.com/blog/sharding-partitioning-segments-get-most-from-your-database
+
+* https://docs.zilliz.com/docs/use-partition-key
+
+
 
 ***Dynamic Fields***
 

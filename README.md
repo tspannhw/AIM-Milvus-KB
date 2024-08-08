@@ -69,6 +69,24 @@ milvus-cli doesn't support connecting milvus with TLS / SSL.
 https://milvus.io/docs/install_cli.md
 
 
+***Clean Restart***
+
+Similar issue: https://github.com/milvus-io/milvus/issues/30845
+
+I don't know what is the root cause. From the comment of this issue, looks like there are two options:
+upgrade the milvus to >= 2.3.10, I think you can upgrade it to the latest version of v2.3. The latest version is v2.3.20
+
+**delete WAL files.**
+
+the directory tree of a standalone is like this:
+
+The wal files are under the volumes/milvus/rdb_data and rdb_data_meta_kv. 
+
+Stop the server, delete the two directories and restart the server.
+Image
+
+
+
 ***Backup***
 
 The official backup tool is milvus-backup: 

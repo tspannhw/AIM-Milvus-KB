@@ -174,6 +174,23 @@ https://github.com/milvus-io/milvus/issues/34150
 
 #### Tips
 
+
+***Long Load Times***
+
+TLDR:  Run Milvus 2.4 (most recent), have fast network between you and S3.   Know your collection size.
+
+
+why does milvus take hours to load a collection into memory? We get frequest crashes on the milvus standalone container, logs are very unhelpful. Shouldnt loading a collection into memory take seconds if not minutes? Index files are already written on s3/minio correct?
+
+After you call collection.load(), the query nodes will read index data from the S3/minio into memory. 
+
+In the recent versions(v2.3 or v2.4), if the dataset is huge(100M ~ 1B), normally, the time to load the collection is less than 30 minutes.
+
+In the old versions(v2.1, v2.2), for huge dataset, it might take hours to load the collection.
+
+So, if your milvus is not an old version, it could be a bug that takes hours to load the collection. Another possibility is the network bandwidth between query nodes and s3 is poor.
+
+
 ***Multitenancy with Partition Keys***
 
 ````

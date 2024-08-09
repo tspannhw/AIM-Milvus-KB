@@ -317,6 +317,11 @@ https://github.com/milvus-io/pymilvus/pull/2222/files
 As of Milvus 2.4.4:  No, milvus doesn't have commit/rollback operations.
 
 
+#### Issues to Watch
+
+https://github.com/milvus-io/milvus/issues/35389
+
+
 #### Resources
 
 * https://python.langchain.com/v0.2/docs/integrations/vectorstores/milvus/#per-user-retrieval

@@ -308,6 +308,10 @@ If you want to change index type or index parameter, you need to release the col
 No need to manually call compaction. Milvus will automatically compact the data by itself.
 
 
+BinLog Import
+https://github.com/milvus-io/pymilvus/pull/2222/files
+
+
 ***Commit/Rollback***
 
 As of Milvus 2.4.4:  No, milvus doesn't have commit/rollback operations.

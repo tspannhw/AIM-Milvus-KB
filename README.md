@@ -175,6 +175,27 @@ https://github.com/milvus-io/milvus/issues/34150
 #### Tips
 
 
+***ID Orders***
+
+````
+If a primary key is auto-id, when you call the insert() interface, it returns a list of IDs and the order of the IDs is consistent with the order of the vectors.
+For example, I insert 3 rows:
+data = [
+  {"vector": vector_1},
+  {"vector": vector_2},
+  {"vector": vector_3},
+]
+ids = client.insert(collection_name=collection_name, data=data)
+print(ids)
+
+The returned object that show you the ID list:
+{'insert_count': 3, 'ids': [451792818590572750, 451792818590572751, 451792818590572752]}
+
+451792818590572750 is the ID of the vector_1
+451792818590572751 is the ID of the vector_2
+451792818590572752 is the ID of the vector_3
+
+````
 ***Long Load Times***
 
 TLDR:  Run Milvus 2.4 (most recent), have fast network between you and S3.   Know your collection size.

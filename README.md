@@ -68,6 +68,16 @@ milvus-cli doesn't support connecting milvus with TLS / SSL.
 
 https://milvus.io/docs/install_cli.md
 
+***ATTU Hint***
+
+The milvus server is remote, you should add a MILVUS_URL to specify the remote milvus host.
+ I think the SERVER_NAME should match the CommonName configured in the certificate.
+
+````
+sudo docker run -p 8080:3000 
+    -e MILVUS_URL={milvus server IP}:19530
+    ......
+````
 
 ***Clean Restart***
 

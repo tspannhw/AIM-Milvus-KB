@@ -61,6 +61,10 @@ https://milvus.io/docs/abs.md
 
 Indexes are not yet implemented.
 
+***Milvus to Minio***
+
+Opens a new connection and performs action when needed, no connection kept open
+
 
 ***Milvus CLI***
 

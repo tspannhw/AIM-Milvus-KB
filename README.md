@@ -113,6 +113,11 @@ Bulk Writer is a tool for generating Parquet files with correct format for milvu
 https://milvus.io/api-reference/pymilvus/v2.4.x/DataImport/LocalBulkWriter/LocalBulkWriter.md
 
 
+***MMAP***
+
+https://milvus.io/docs/manage-collections.md#Set-MMAP
+
+
 ***Multi Vector Fields***
 
 v2.4.x supports multi vector fields.

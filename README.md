@@ -83,6 +83,22 @@ sudo docker run -p 8080:3000
     ......
 ````
 
+***Milvus Row Count***
+
+The 'Approx Entity Count' is equal to the 'collection.num_entities' in pymilvus. This method quickly pick the number from Etcd. 
+As we know, when you insert data, the data firstly is passed to the Pulsar(or local message queue) as write-ahead-log. And the query nodes and data nodes consume the data from the message queue. Data node accumulates data in an in-memory buffer, once the buffer size exceeds a threshold, data node flushes the buffer to be sealed segment.
+Only sealed segments are recorded in Etcd. This method only counts the number of rows in sealed segments. Some data maight still in message queue or in the buffer of data node. So, this method is inaccurate. And, this method doesn't count the deleted items.
+
+The accurate way is: https://milvus.io/docs/get-and-scalar-query.md#Advanced-operators
+In pymilvus:
+````
+res = client.query(collection_name=name, filter="", output_fields=["count(*)"])
+print(f'row count: {res[0]["count(*)"]}')
+```
+It is a real query to iterate all the segments including the in-memory buffer to sum up the row count, and deleted items are skipped.
+
+In Attu, if you click load button to load the collection, it will call query(count(*)) to get the accurate row count and show the number in the 'Approx Entity Count' field.
+
 ***Clean Restart***
 
 Similar issue: https://github.com/milvus-io/milvus/issues/30845

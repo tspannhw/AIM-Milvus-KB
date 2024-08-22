@@ -49,6 +49,17 @@ CrossEncoderRerankFunction` class. This functionality allows you to score the re
 https://milvus.io/docs/rerankers-cross-encoder.md
 
 
+***LLama-Index Tips***
+````
+index = VectorStoreIndex.from_documents(documents)    <- for llama-index this uses their in-memory only Milvus that gets flushed everytime.   all data removed.
+
+```
+
+* https://discord.com/channels/1160323594396635310/1276169672869417071
+* https://docs.llamaindex.ai/en/stable/module_guides/indexing/vector_store_index/
+* https://docs.llamaindex.ai/en/stable/examples/vector_stores/MilvusIndexDemo/
+* https://docs.llamaindex.ai/en/stable/module_guides/indexing/vector_store_guide/.
+
 
 ***Milvus Cloud Storage***
 

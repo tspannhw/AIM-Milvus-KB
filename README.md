@@ -1,6 +1,16 @@
 # AIM-Milvus-KB
 Knowledge Base for Milvus
 
+#### Tips
+
+````
+In the milvus.yaml, add this configuration item:
+quotaAndLimits:
+  limits:
+    maxOutputSize: 104857600
+
+The default is 104857600 bytes, you can change it to a larger value.
+````
 
 #### Features
 

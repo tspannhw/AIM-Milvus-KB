@@ -12,6 +12,32 @@ quotaAndLimits:
 The default is 104857600 bytes, you can change it to a larger value.
 ````
 
+#### FP32
+
+````
+JeremyZhu — Yesterday at 11:57 PM
+Thank you for your insightful observation and question. Let me explain the reasoning behind this and address your concerns:
+
+Data Source Precision:
+The OpenAI embedding models indeed generate vectors with float64 (double) precision. This is why you're seeing the double type in the train.parquet files. You can find this information in OpenAI's official documentation: https://platform.openai.com/docs/guides/embeddings/what-are-embeddings
+
+Storage and Processing Considerations:
+While the original data is in float64, many vector databases and ANN (Approximate Nearest Neighbor) search libraries typically use float32. This is done for performance and storage efficiency reasons. For instance, Milvus supports float32 as its highest precision.
+Precision Conversion:
+When these vectors are converted from float64 to float32 for database storage, there is indeed some loss of precision.
+Impact Assessment:
+Although there is a loss in precision, this loss is generally acceptable for most ANN search applications. float32 provides about 6-9 decimal digits of precision, which is usually sufficient for most similarity search tasks.
+Performance Trade-off:
+Using float32 instead of float64 can offer significant performance advantages:
+   Halved memory usage
+   Faster computation speeds
+   Better cache efficiency
+Practical Application:
+For OpenAI's 1536-dimensional embeddings, using float32 for storage typically doesn't significantly impact search quality in most use cases.
+````
+![image](https://github.com/user-attachments/assets/92a0fee2-4aca-4652-b241-4db6dd4ec435)
+
+
 #### Features
 
 ***Docker Compose Requirements***

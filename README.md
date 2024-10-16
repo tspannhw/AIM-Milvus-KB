@@ -11,7 +11,13 @@ quotaAndLimits:
 
 The default is 104857600 bytes, you can change it to a larger value.
 ````
+#### How to use dates
 
+````
+
+https://github.com/milvus-io/milvus/discussions/35939
+
+````
 
 #### Dynamic vs Predefined Fields
 

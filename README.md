@@ -12,6 +12,23 @@ quotaAndLimits:
 The default is 104857600 bytes, you can change it to a larger value.
 ````
 
+
+#### Dynamic vs Predefined Fields
+
+````
+
+Is predefined fields more optimized than dynamic fields?
+
+
+yhmo
+A predefined field is stored as column-based files. The dynamic field is stored as a list of JSON strings. It is easier to read/parse column-based file than JSON strings.
+
+Currently, Milvus supports scalar index for the predefined fields, but doesn't support index for dynamic field.
+
+In practice, if you want to do filtering-search on a property, you can define the property as a scalar field so that the filtering-search can use scalar index to improve search performance.
+````
+
+
 #### FP32
 
 ````
